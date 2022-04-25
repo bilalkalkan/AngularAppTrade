@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>ProductName</th>
+      <th>Unit price</th>
+      <th>Quantity Per Unit</th>
+      <th>Total</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of cartList">
+      <tr>
+        <th scope="row">{{ item.product.productName | uppercase }}</th>
+        <td>{{ item.product.unitPrice | currency: "₺" }}</td>
+        <td>{{ item.product.quantityPerUnit }}</td>
+        <td>{{ item.count }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
