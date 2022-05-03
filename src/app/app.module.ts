@@ -9,15 +9,19 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './product/pipe/filter.pipe';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/services/cart.service';
+import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     ProductComponent,
     KdvPipe,
     FilterPipe,
     CartComponent,
-  ],
+    CartSummaryComponent,
+      CategoryComponent
+   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [CartService],
   bootstrap: [AppComponent],

@@ -1,0 +1,29 @@
+<div class="col mt-3">
+  <h4 class="page-header">Kategori</h4>
+</div>
+<ul class="list-group mt-3">
+  <ng-container *ngIf="categoryList && categoryList.length > 0">
+    <li
+      class="list-group-item"
+      routerLinkActive="active"
+      routerLink="products"
+      [routerLinkActiveOptions]="{ exact: true }"
+      style="cursor: pointer"
+    >
+      Hepsi
+    </li>
+  </ng-container>
+  <ng-container *ngFor="let category of categoryList">
+    <li
+      class="list-group-item"
+      routerLinkActive="active"
+      routerLink="products/{{ category.categoryId }}"
+      style="cursor: pointer"
+    >
+      {{ category.categoryName }}
+    </li>
+    <!-- <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li> -->
+  </ng-container>
+</ul>

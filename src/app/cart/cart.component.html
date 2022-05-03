@@ -1,21 +1,54 @@
-<table class="table">
+<div class="col mt-3">
+  <h4 class="page-header">Sepetim</h4>
+</div>
+
+<table
+  class="table"
+  *ngIf="cartList && cartList.length; else cartEmptyAlertTemplate"
+>
   <thead>
     <tr>
+      <th>#</th>
       <th>ProductName</th>
       <th>Unit price</th>
       <th>Quantity Per Unit</th>
+      <th>Quantity</th>
       <th>Total</th>
-      <th></th>
+      <th>Total KDV</th>
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let item of cartList">
+    <ng-container *ngFor="let cart of cartList; let i = index">
       <tr>
-        <th scope="row">{{ item.product.productName | uppercase }}</th>
-        <td>{{ item.product.unitPrice | currency: "₺" }}</td>
-        <td>{{ item.product.quantityPerUnit }}</td>
-        <td>{{ item.count }}</td>
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ cart.product.productName | uppercase }}</td>
+        <td>{{ cart.product.unitPrice | currency: "₺" }}</td>
+        <td>{{ cart.product.quantityPerUnit }}</td>
+        <td>{{ cart.count }}</td>
+        <td>{{ getTotal(cart) }}</td>
+        <td>{{ getTotalKdv(cart) }}</td>
+        <td>
+          <button
+            class="btn btn-danger btn-sm"
+            type="button"
+            (click)="removeFromCart(cart, _removeType.single)"
+          >
+            Sil
+          </button>
+          <button
+            class="btn btn-warning btn-sm ms-3"
+            type="button"
+            (click)="removeFromCart(cart, _removeType.multiple)"
+          >
+            Tümünü Sil
+          </button>
+        </td>
       </tr>
     </ng-container>
   </tbody>
 </table>
+<ng-template #cartEmptyAlertTemplate sdad
+  ><div class="alert alert-warning" role="alert">
+    Sepetinizde ürün bulunmamaktır
+  </div></ng-template
+>
