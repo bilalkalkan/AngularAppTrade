@@ -28,6 +28,5 @@ export class CartSummaryComponent implements OnInit, DoCheck {
       0
     );
     this.totalCount = this.cartList.reduce((a, b) => a + b.count, 0);
-    debugger;
   }
 }

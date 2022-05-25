@@ -2,6 +2,20 @@
   <h4 class="page-header">Ürünler</h4>
 </div>
 
+<div class="col-9 text-end">
+  <button class="btn btn-primary float-end" routerLink="/product">
+    Yeni ürün ekle (Button)
+  </button>
+  <button
+    class="btn btn-danger"
+    type="button"
+    (click)="onRedirectAddProductPage()"
+  >
+    Yeni ürün ekle (Buton- method )
+  </button>
+  <a class="btn btn-success" href="/product">Yeni ürün ekle (a)</a>
+</div>
+
 <ng-container *ngIf="addedProduct">
   <div class="alert alert-success mt-3" role="alert">
     {{ addedProduct }} sepete eklendi.
@@ -28,6 +42,12 @@
     <li class="list-group-item">
       <button class="btn btn-success float-end" (click)="addToCart(product)">
         Sepete Ekle
+      </button>
+      <button
+        class="btn btn-primary float-end me-2"
+        routerLink="/product/{{ product.productId }}"
+      >
+        Düzenle
       </button>
       <h5>
         <b>{{ product.productName | uppercase }}</b>

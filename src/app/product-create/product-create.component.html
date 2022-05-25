@@ -1,0 +1,264 @@
+<div class="col mt-3">
+  <h4>Yeni ürün ekle</h4>
+</div>
+<div class="row">
+  <div class="col-6">
+    <form [formGroup]="form">
+      <div class="mb-3">
+        <label for="categoryId" class="form-label">Ürün Kategorisi</label>
+        <ng-select
+          bindLabel="name"
+          name="categoryId"
+          appendTo="body"
+          placeholder="Seçiniz"
+          formControlName="categoryId"
+          [ngClass]="{
+            'is-invalid': f['categoryId'].invalid,
+            'is-valid': f['categoryId'].valid
+          }"
+        >
+          <ng-option
+            *ngFor="let list of categories"
+            [value]="list.categoryId"
+            >{{ list.categoryName }}</ng-option
+          >
+        </ng-select>
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'Bu alan boş bırakılamaz',
+            control: f['categoryId']
+          }"
+        ></ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="productName" class="form-label">Ürün Adı</label>
+        <input
+          formControlName="productName"
+          type="text"
+          class="form-control"
+          id="productName"
+          [ngClass]="{
+            'is-invalid': f['productName'].invalid,
+            'is-valid': f['productName'].valid
+          }"
+        />
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'Bu alan boş bırakılamaz',
+            control: f['productName']
+          }"
+        ></ng-container>
+
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'minlength',
+            message: 'En az 3 karakter',
+            control: f['productName']
+          }"
+        ></ng-container>
+
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'maxlength',
+            message: 'En fazla 10 karakter girilmelidir',
+            control: f['productName']
+          }"
+        ></ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="quantityPerUnit" class="form-label">Ürün Açıklama</label>
+        <input
+          formControlName="quantityPerUnit"
+          type="text"
+          class="form-control"
+          id="quantityPerUnit"
+          [ngClass]="{
+            'is-invalid': f['quantityPerUnit'].invalid,
+            'is-valid': f['quantityPerUnit'].valid
+          }"
+        />
+
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'Bu alan boş bırakılamaz',
+            control: f['quantityPerUnit']
+          }"
+        ></ng-container>
+
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'minlength',
+            message: 'En az 3 karakter',
+            control: f['quantityPerUnit']
+          }"
+        ></ng-container>
+
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'maxlength',
+            message: 'En fazla 10 karakter girilmelidir',
+            control: f['quantityPerUnit']
+          }"
+        ></ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="unitPrice" class="form-label">Ürün Fiyatı</label>
+        <input
+          formControlName="unitPrice"
+          type="number"
+          class="form-control"
+          id="unitPrice"
+          [ngClass]="{
+            'is-invalid': f['unitPrice'].invalid,
+            'is-valid': f['unitPrice'].valid
+          }"
+        />
+
+        <ng-container
+          [ngTemplateOutlet]="formAlertTemplate"
+          [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'Bu alan boş bırakılamaz',
+            control: f['unitPrice']
+          }"
+        ></ng-container>
+      </div>
+    </form>
+  </div>
+  <div class="col-6">
+    <div class="mb-3">
+      <label for="categoryId" class="form-label">Ürün Kategorisi</label>
+      <ng-select
+        bindLabel="name"
+        id="ngcategoryId"
+        name="categoryId"
+        appendTo="body"
+        placeholder="Seçiniz"
+        [(ngModel)]="product.categoryId"
+        [ngClass]="{
+          'is-invalid': f['categoryId'].invalid,
+          'is-valid': f['categoryId'].valid
+        }"
+      >
+        <ng-option *ngFor="let list of categories" [value]="list.categoryId">{{
+          list.categoryName
+        }}</ng-option>
+      </ng-select>
+    </div>
+    <div class="mb-3">
+      <label for="productName" class="form-label">Ürün Adı</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ngproductName"
+        [(ngModel)]="product.productName"
+        [ngClass]="{
+          'is-invalid': f['productName'].invalid,
+          'is-valid': f['productName'].valid
+        }"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="quantityPerUnit" class="form-label">Ürün Açıklama</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ngquantityPerUnit"
+        [(ngModel)]="product.quantityPerUnit"
+        [ngClass]="{
+          'is-invalid': f['quantityPerUnit'].invalid,
+          'is-valid': f['quantityPerUnit'].valid
+        }"
+      />
+
+      <ng-container
+        [ngTemplateOutlet]="formAlertTemplate"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'Bu alan boş bırakılamaz',
+          control: f['quantityPerUnit']
+        }"
+      ></ng-container>
+
+      <ng-container
+        [ngTemplateOutlet]="formAlertTemplate"
+        [ngTemplateOutletContext]="{
+          validation: 'minlength',
+          message: 'En az 3 karakter',
+          control: f['quantityPerUnit']
+        }"
+      ></ng-container>
+
+      <ng-container
+        [ngTemplateOutlet]="formAlertTemplate"
+        [ngTemplateOutletContext]="{
+          validation: 'maxlength',
+          message: 'En fazla 10 karakter girilmelidir',
+          control: f['quantityPerUnit']
+        }"
+      ></ng-container>
+    </div>
+    <div class="mb-3">
+      <label for="unitPrice" class="form-label">Ürün Fiyatı</label>
+      <input
+        type="number"
+        class="form-control"
+        id="ngunitPrice"
+        [(ngModel)]="product.unitPrice"
+        [ngClass]="{
+          'is-invalid': f['unitPrice'].invalid,
+          'is-valid': f['unitPrice'].valid
+        }"
+      />
+
+      <ng-container
+        [ngTemplateOutlet]="formAlertTemplate"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'Bu alan boş bırakılamaz',
+          control: f['unitPrice']
+        }"
+      ></ng-container>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6 text-end">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onSaveReactiveForm()"
+      [disabled]="form.invalid"
+    >
+      Kaydet (Reactive Form)
+    </button>
+  </div>
+  <div class="col-6 text-end">
+    <button type="button" class="btn btn-primary" (click)="onSaveForm()">
+      Kaydet (Form (ngModel))
+    </button>
+  </div>
+</div>
+
+<ng-template
+  #formAlertTemplate
+  let-control="control"
+  let-message="message"
+  let-validation="validation"
+>
+  <ng-container
+    *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+  >
+    <div class="text-warning">{{ message }}</div>
+  </ng-container>
+</ng-template>
